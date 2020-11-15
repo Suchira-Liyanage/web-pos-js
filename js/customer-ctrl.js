@@ -26,6 +26,7 @@
 // Todo: add all global variable declaration here
 
 var btnSave = document.getElementById('btn-save');
+var customerTable = document.querySelector('#tbl-customers');
 
 /*===============================================================================
  * Init
@@ -49,6 +50,15 @@ btnSave.addEventListener('click',function (){
     var customerAddress = document.getElementById('txt-address').value;
     var customer = new CreateCustomer(customerID, customerName, customerAddress);
     addTable(customer);
+});
+
+customerTable.addEventListener('mouseover',function (event){
+    if (event.target.className === 'deleteIcon'){
+        event.target.setAttribute('src','./img/trash-hover.png');
+        event.target.addEventListener('mouseout',function (){
+            event.target.setAttribute('src','./img/trash.png');
+        })
+    }
 });
 
 /*===============================================================================
