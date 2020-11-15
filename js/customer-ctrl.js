@@ -63,6 +63,7 @@ customerTable.addEventListener('mouseover',function (event){
 });
 
 customerTable.addEventListener('click',function (event){
+    var rowIndex = event.target.closest("tr").rowIndex;
     if (event.target.className === 'deleteIcon'){
         Swal.fire({
             title: 'Are you sure whether you want to delete this customer?',
@@ -74,6 +75,7 @@ customerTable.addEventListener('click',function (event){
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
+                customerTable.deleteRow(rowIndex);
                 Swal.fire(
                     'Deleted!',
                     'Your file has been deleted.',
@@ -84,9 +86,20 @@ customerTable.addEventListener('click',function (event){
     }
 });
 
+customerTable.addEventListener('click',function (event){
+
+});
+
 setInterval(function (){
     if (customerTable.rows.length > 2){
         customerTable.deleteTFoot();
+    }else{
+        var tfoot = customerTable.createTFoot();
+        tfoot.innerHTML = '<tr>\n' +
+            '                    <td class="text-center" colspan="4">\n' +
+            '                        📌 <small>There are no records to show. Add a new customer.</small>\n' +
+            '                    </td>\n' +
+            '                </tr>'
     }
 },100);
 
