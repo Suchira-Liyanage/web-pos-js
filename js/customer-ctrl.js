@@ -86,10 +86,13 @@ customerTable.addEventListener('click',function (event){
     }
 });
 
-tableBody.addEventListener('click',function (event){
+tableBody.addEventListener('mousedown',function (event){
+    var rows = tableBody.rows;
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].className = '';
+    }
     var selectedRow = event.target.closest("tr");
-    selectedRow.style.backgroundColor = 'black';
-    selectedRow.style.color = 'white';
+    selectedRow.className = 'table-dark';
 });
 
 setInterval(function (){
@@ -115,7 +118,7 @@ function CreateCustomer(id, name, address){
     this.id = id;
     this.name = name;
     this.address = address;
-};
+}
 
 function addTable(customer){
     var tableBody = document.getElementById('tableBody');
