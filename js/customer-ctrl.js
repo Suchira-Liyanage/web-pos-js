@@ -35,6 +35,7 @@ var txtAddress = document.getElementById('txt-address');
 
 var selected = false;
 var selectedCustomer;
+var form = document.querySelector('form');
 
 /*===============================================================================
  * Init
@@ -98,6 +99,10 @@ customerTable.addEventListener('click',function (event){
     }
 });
 
+customerTable.addEventListener('click',function (event){
+   console.log(event);
+});
+
 tableBody.addEventListener('mousedown',function (event){
     var rows = tableBody.rows;
     for (var i = 0; i < rows.length; i++) {
@@ -117,6 +122,16 @@ tableBody.addEventListener('mousedown',function (event){
 
 tableBody.addEventListener("mousemove", function (){
    tableBody.style.cursor = 'pointer';
+});
+
+form.addEventListener('reset',function (){
+    var rows = tableBody.rows;
+    for (var i = 0; i < rows.length; i++) {
+        rows[i].className = '';
+    }
+    selected = false;
+    txtId.removeAttribute('disabled');
+    txtId.focus();
 });
 
 setInterval(function (){
