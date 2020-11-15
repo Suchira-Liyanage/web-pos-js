@@ -62,6 +62,12 @@ customerTable.addEventListener('mouseover',function (event){
     }
 });
 
+setInterval(function (){
+    if (customerTable.rows.length > 2){
+        customerTable.deleteTFoot();
+    }
+},100);
+
 /*===============================================================================
  * Functions
  *===============================================================================*/
