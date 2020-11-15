@@ -29,6 +29,10 @@ var btnSave = document.getElementById('btn-save');
 var customerTable = document.querySelector('#tbl-customers');
 var tableBody = document.getElementById('tableBody');
 
+var txtId = document.getElementById('txt-id');
+var txtName = document.getElementById('txt-name');
+var txtAddress = document.getElementById('txt-address');
+
 /*===============================================================================
  * Init
  *===============================================================================*/
@@ -93,6 +97,16 @@ tableBody.addEventListener('mousedown',function (event){
     }
     var selectedRow = event.target.closest("tr");
     selectedRow.className = 'table-dark';
+    var cells = selectedRow.cells;
+    txtId.value = cells[0].innerText
+    txtName.value = cells[1].innerText
+    txtAddress.value = cells[2].innerText
+
+
+});
+
+tableBody.addEventListener("mousemove", function (){
+   tableBody.style.cursor = 'pointer';
 });
 
 setInterval(function (){
