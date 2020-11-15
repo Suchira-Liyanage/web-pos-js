@@ -33,6 +33,9 @@ var txtId = document.getElementById('txt-id');
 var txtName = document.getElementById('txt-name');
 var txtAddress = document.getElementById('txt-address');
 
+var selected = false;
+var selectedCustomer;
+
 /*===============================================================================
  * Init
  *===============================================================================*/
@@ -53,8 +56,13 @@ btnSave.addEventListener('click',function (){
     var customerID = document.getElementById('txt-id').value;
     var customerName = document.getElementById('txt-name').value;
     var customerAddress = document.getElementById('txt-address').value;
-    var customer = new CreateCustomer(customerID, customerName, customerAddress);
-    addTable(customer);
+    if (selected){
+        selectedCustomer.cells[1].innerText = customerName;
+        selectedCustomer.cells[2].innerText = customerAddress;
+    }else {
+        var customer = new CreateCustomer(customerID, customerName, customerAddress);
+        addTable(customer);
+    }
 });
 
 customerTable.addEventListener('mouseover',function (event){
@@ -97,11 +105,13 @@ tableBody.addEventListener('mousedown',function (event){
     }
     var selectedRow = event.target.closest("tr");
     selectedRow.className = 'table-dark';
+    selected = true;
     var cells = selectedRow.cells;
-    txtId.value = cells[0].innerText
-    txtName.value = cells[1].innerText
-    txtAddress.value = cells[2].innerText
+    txtId.value = cells[0].innerText;
+    txtName.value = cells[1].innerText;
+    txtAddress.value = cells[2].innerText;
     txtId.setAttribute('disabled',true);
+    selectedCustomer = selectedRow;
 
 });
 
