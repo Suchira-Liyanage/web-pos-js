@@ -93,7 +93,7 @@ customerTable.addEventListener('click',function (event){
 setInterval(function (){
     if (customerTable.rows.length > 2){
         customerTable.deleteTFoot();
-    }else{
+    }else if (customerTable.rows.length < 2){
         var tfoot = customerTable.createTFoot();
         tfoot.innerHTML = '<tr>\n' +
             '                    <td class="text-center" colspan="4">\n' +
