@@ -27,6 +27,7 @@
 
 var btnSave = document.getElementById('btn-save');
 var customerTable = document.querySelector('#tbl-customers');
+var txtId = document.getElementById('txt-id');
 
 /*===============================================================================
  * Init
