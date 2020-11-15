@@ -101,7 +101,7 @@ tableBody.addEventListener('mousedown',function (event){
     txtId.value = cells[0].innerText
     txtName.value = cells[1].innerText
     txtAddress.value = cells[2].innerText
-
+    txtId.setAttribute('disabled',true);
 
 });
 
